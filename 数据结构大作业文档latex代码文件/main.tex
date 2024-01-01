@@ -1,0 +1,76 @@
+\documentclass{lzureport}
+
+\usepackage{caption}
+\usepackage[dvipsnames]{xcolor}  % 更全的色系
+\usepackage{listings}  % 排代码用的宏包
+
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tabularx,array,makecell}
+%\usepackage{color,xcolor}
+%\usepackage{cases}
+%\usepackage{mathtools}
+%\usepackage{tcolorbox}
+%\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% listings设置
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{
+	language = Python,
+	backgroundcolor = \color{yellow!10},    % 背景色：淡黄
+	basicstyle = \small\ttfamily,           % 基本样式 + 小号字体
+	rulesepcolor= \color{gray},             % 代码块边框颜色
+	breaklines = true,                  % 代码过长则换行
+	numbers = left,                     % 行号在左侧显示
+	numberstyle = \small,               % 行号字体
+	keywordstyle = \color{blue},            % 关键字颜色
+	commentstyle =\color{green!100},        % 注释颜色
+	stringstyle = \color{red!100},          % 字符串颜色
+	frame = shadowbox,                  % 用（带影子效果）方框框住代码块
+	showspaces = false,                 % 不显示空格
+	columns = fixed,                    % 字间距固定
+	%escapeinside={<@}{@>}              % 特殊自定分隔符：<@可以自己加颜色@>
+	morekeywords = {as},                % 自加新的关键字（必须前后都是空格）
+	deletendkeywords = {compile}        % 删除内定关键字；删除错误标记的关键字用deletekeywords删！
+}
+
+\major{统计学}
+\name{陈祥蔚}
+\title{数据结构与卷积神经网络代码实现}
+\stuid{320190930061}
+\college{数学与统计学院}
+\date{\zhtoday}
+\expname{数据结构大作业}
+\course{数据结构与卷积神经网络代码实现}
+
+
+\begin{document}
+
+\makecover
+
+\input{chapter/abstract.tex}
+
+\thispagestyle{empty}
+\tableofcontents
+\newpage 
+\setcounter{page}{1}
+
+\input{chapter/introduction.tex}
+\input{chapter/datastructure.tex}
+\input{chapter/dataset.tex}
+\input{chapter/preprocess.tex}
+\input{chapter/CNN.tex}
+\input{chapter/trainning.tex}
+\input{chapter/testing.tex}
+% \input{chapter/results.tex}
+\input{chapter/discussion.tex}
+\input{chapter/conclusion.tex}
+
+%\input{chapter/reference.tex}
+
+\appendix
+
+%\input{chapter/appendix.tex}
+
+\end{document}

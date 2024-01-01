@@ -1,0 +1,24 @@
+\section{预处理}
+为了能够进行CNN的训练，我们需要对于现有的数据进行一些预处理。预处理的文件是mydata.py，处理后的数据存放在data文件夹中，该文件夹中包括了test\_data.npy，test\_data.npy，train\_label.npy，train\_data.npy，val\_data.npy，val\_label.npy。
+
+预处理包括了以下步骤：
+
+\noindent1、定义获取图片路径的函数： get\_photo\_paths 函数接受一个文件夹路径作为参数，检查该文件夹是否存在，获取文件夹中的所有文件，并返回包含这些文件路径的列表。
+
+\noindent2、定义加载训练数据的函数： get\_training\_data 函数接受两个线性表对象作为参数，用于存储数据和对应的标签。函数根据文件路径加载图像数据，将其调整大小，然后添加到数据线性表中，并根据文件路径中是否包含特定标签确定对应的标签。
+
+\noindent3、初始化线性表和获取图片路径列表： 创建三个线性表对象 train、test、val，并通过 get\_photo\_paths 函数获取训练、测试和验证集的图像文件路径。
+
+\noindent4、将图片信息加载到线性表中： 使用 add\_data 方法将图像信息加载到训练、测试和验证集的线性表中。
+
+\noindent5、建立用于存放标签的线性表： 创建三个线性表对象 train\_data\_label、test\_data\_label、val\_data\_label，用于存放对应的标签信息。
+
+\noindent6、获取训练数据： 调用 get\_training\_data 函数获取训练、测试和验证集的图像数据，并将其归一化。
+
+\noindent7、预处理： 将图像数据的形状修改为在代码中定义的 img\_size（150）。
+
+\noindent8、转换数据类型： 将图像数据和标签的数据类型转换为适用于 MindSpore 框架的数据类型。
+
+\noindent9、修改标签的形状： 使用 np.squeeze 函数将标签的形状进行修改。
+
+\noindent10、保存文件： 将处理后的图像数据和标签保存为 .npy 文件，以备后续在 MindSpore 中使用。

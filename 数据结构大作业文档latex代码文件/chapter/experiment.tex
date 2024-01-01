@@ -1,0 +1,121 @@
+\section{开始实验}
+\zhlipsum[2]\cite{HPC}
+
+计数列表环境
+\begin{enumerate}
+	\item 这是一个计数列表环境.
+	\item 这是一个计数列表环境.
+	\item 这是一个计数列表环境.
+\end{enumerate}
+
+\vspace{2ex}
+不计数列表环境
+\begin{itemize}
+	\item 这是一个不计数列表环境.
+	\item 这是一个不计数列表环境.
+	\item 这是一个不计数列表环境.
+\end{itemize}
+
+
+
+一些公式:
+
+$$
+		\left\{\begin{array}{l}
+			\mbox{Find } u \in X \mbox{ such that } \\
+			a(u, v)=F(v),~\forall v \in X.
+		\end{array} \right. 
+$$
+has a unique solution. Moreover, we have
+\begin{equation}
+	 \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}. 
+\end{equation}
+
+
+表格模板:
+
+\begin{table}
+	\caption{这是一个三线表.}	
+	\centering
+	\begin{tabular}{ccc}
+		\toprule
+		\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+		\midrule
+		Treatment 1 & 0.0003262 & 0.562 \\
+		Treatment 2 & 0.0015681 & 0.910 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+本文定义了新的可变长度左中右 (LCR) 格式, LCR 三个格式会根据表格宽度的设定自行控制宽度, 且其宽度相等, 方便设置和页面相同宽度的表格. 本文还定义了 P\{\} 格式可以设定某一列宽度 (如 P\{1cm\} 控制某一列的宽度为 1cm) 并居中.%{0.9\textwidth}
+\begin{table}[!htp]
+	\centering
+	% PLCR已经定义
+	\caption{某校学生身高体重样本.}
+	\label{tab2:heightweight}	
+	\begin{tabular}{lccc}
+		\toprule
+		序号&年龄&身高&体重\\
+		\midrule
+		1&14&156&42\\
+		2&16&158&45\\
+		3&14&162&48\\
+		4&15&163&50\\
+		\cmidrule{2-4}
+		平均&15&159.75&46.25\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+表格示例
+%\begin{table}[htp!]
+%	\centering
+%	\renewcommand\arraystretch{1.2} %定义表格高度
+%	% PLCR前面已经定义
+%	\caption{表格的描述.}
+%	\label{tab3:NumError}
+%	\begin{tabularx}{0.9\textwidth}{|P{1cm}|c|c|c|c|}
+%		\Xhline{2\arrayrulewidth}
+%		N  & A       & B    & C  & D   \\
+%		\Xhline{2\arrayrulewidth}
+%		1  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06  \\
+%		2  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05  \\
+%		3  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 \\
+%		4  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 \\
+%		5 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06  \\
+%		6 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05  \\
+%		7 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 \\
+%		8 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05  \\
+%		9 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 \\
+%		\Xhline{2\arrayrulewidth}
+%	\end{tabularx}
+%\end{table}
+
+
+\begin{lstlisting}[caption = cs代码表测试]
+	import keras
+	from keras import layers
+	
+	def train_model(maxword, maxlen):
+	model = keras.Sequential()
+	
+	# 前面数据需要的“词向量化”的操作，不算双向RNN的要求：
+	model.add( layers.Embedding(maxword, 50, input_length=maxlen) )
+	
+	# 双向RNN搭建：
+	model.add( layers.Bidirectional( layers.LSTM(64, dropout = 0.2, recurrent_dropout = 0.5) ) )
+	
+	# 外接一个单独的dropout层：非必须
+	model.add( layers.Dropout(0.2) )
+	
+	# 进入全连接层：二分类，1个神经元就够
+	model.add( layers.Dense(1, activation='sigmoid') )
+	
+	# 网络编译也在这个函数内完成：内容没变化
+	model.compile( optimizer='adam',
+	loss = 'binary_crossentropy',
+	metrics = ['acc']
+	) 
+	return model
+\end{lstlisting}

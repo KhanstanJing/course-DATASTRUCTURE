@@ -1,0 +1,37 @@
+dshm中保存到是原始数据集
+pythonstarter中保存的是代码文件
+请将这两个文件直接保存到D盘中后开始测试
+pythonstarter中有两个文件，一个是dshmnotbroken，这个是包括了预处理后的数据，以及mindspore模型，不能保证效果
+另一个是dshmwithpytorch，这个文件中的模型可以跑出来结果
+因为开始写的时候没有想那么多，后来发现文件中的一些路径要改起来太麻烦了
+dshmwithpytorch文件夹中
+	文件夹：
+		model保存的是模型的参数
+		mydataset保存的是预处理过的数据
+		plots保存的是作业中关于不同数据结构的性能比较的图片
+		time&memory保存的是不同数据结构的实验数据，用于绘制plots
+	.py文件：
+		myplot.py是用于绘制plots中的图像的
+		comparell.py是用链表做实验的文件
+		comparelt.py是用线性表做实验的文件
+		datawithll.py是用链表来处理用于模型训练数据的文件
+		datawithlt.py是用线性表来处理用于模型训练数据的文件
+		LinearTable.py是线性表的定义
+		LinkedList.py是链表的定义
+		net.py是神经网络模型
+		train.py是用于训练的文件
+		test.py是用于测试的文件
+dshwnotbroken文件夹中
+	文件夹：
+		checkpoint是一次训练时每隔一定的步数保存的节点（参数）
+		checkpointpertrain是不同的训练中调整不同的参数以便于检查模型问题的节点（参数）
+		data是预处理数据
+	.py文件：
+		LinearTable.py是线性表的定义
+		LinkedList.py是链表的定义
+		mydata.py数据
+		mynet.py模型
+		mycallback.py编写的每次训练中唤起的函数
+		testwithlt.py用线性表进行测试
+		trainwithlt.py用线性表进行训练
+		
